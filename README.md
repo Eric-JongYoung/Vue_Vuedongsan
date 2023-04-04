@@ -1,4 +1,9 @@
-# vuedongsan
+# Vuedongsan 🏡
+
+
+<img src="https://pbs.twimg.com/media/ELlfFQ1XkAEbPCQ.jpg:large" width="400px">
+<p>
+to practice Vue.js
 
 ## Project setup
 ```
