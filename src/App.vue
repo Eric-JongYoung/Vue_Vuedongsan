@@ -1,25 +1,39 @@
 <template>
   <div class="menu">
-    <!-- <a v-for="작명 in 3" :key="작명">Home</a> -->
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
-    <!-- <a v-for="(a,i) in 메뉴들" :key="i">{{ a }}</a> -->
   </div>
 
-  <div v-for="i in products" :key="i">
-    <h4>{{ i.n }}</h4>
-    <p>{{ i.p }}만원</p>
+  <div>
+    <h4>{{products[0]}}</h4>
+    <p>50만원</p>
+    <button @click="신고수[0]++">허위매물신고</button> <span>신고수 : {{ 신고수[0] }}</span>
+  </div>
+  <div>
+    <h4>{{products[1]}}</h4>
+    <p>50만원</p>
+    <button @mouseover="신고수[1]++">허위매물신고</button> <span>신고수 : {{ 신고수[1] }}</span>
+  </div>
+  <div>
+    <h4>{{products[2]}}</h4>
+    <p>50만원</p>
+    <button @click="increase">허위매물신고</button> <span>신고수 : {{ 신고수[2] }}</span>
   </div>
 </template>
 
 <script>
 
-
 export default {
   name: 'App',
   data(){
     return  {
-      products : [ {n :'역삼동원룸', p : 60},{n :'천호동원룸', p :70},{n :'마포구원룸', p: 80}],
+      신고수 : [0,0,0],
+      products : ['역삼동원룸','천호동원룸','마포구원룸'],
       메뉴들 :  ['Home','Shop','About'],
+    }
+  },
+  methods :{
+    increase(){
+      this.신고수[2] += 1;
     }
   },
   components: {
