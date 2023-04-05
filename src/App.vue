@@ -1,16 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div>
-    <h4 :class="클래스명" :style="스타일"> {{ products[0] }} 원룸</h4>
-    <p>{{ price1 }} 만원</p>
+  <div class="menu">
+    <!-- <a v-for="작명 in 3" :key="작명">Home</a> -->
+    <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
+    <!-- <a v-for="(a,i) in 메뉴들" :key="i">{{ a }}</a> -->
   </div>
-  <div>
-    <h4> {{ products[1] }} 원룸</h4>
-    <p>{{ price2 }} 만원</p>
-  </div>
-  <div>
-    <h4> {{ products[2] }} 원룸</h4>
-    <p>{{ price2 }} 만원</p>
+
+  <div v-for="i in products" :key="i">
+    <h4>{{ i.n }}</h4>
+    <p>{{ i.p }}만원</p>
   </div>
 </template>
 
@@ -21,11 +18,8 @@ export default {
   name: 'App',
   data(){
     return  {
-      price1 : 60,
-      price2 : 70,
-      스타일 : 'color : blue',
-      클래스명 : 'wow',
-      products : ['역삼동원룸','천호동원룸','마포구원룸'],
+      products : [ {n :'역삼동원룸', p : 60},{n :'천호동원룸', p :70},{n :'마포구원룸', p: 80}],
+      메뉴들 :  ['Home','Shop','About'],
     }
   },
   components: {
@@ -40,6 +34,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.menu {
+  background: darkslateblue;
+  padding: 15px;
+  border-radius: 5px;
+}
+.menu a {
+  color : white;
+  padding: 10px;
 }
 </style>
