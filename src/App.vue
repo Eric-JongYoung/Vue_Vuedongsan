@@ -3,42 +3,42 @@
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
   </div>
 
+  <div v-if="1 == 2">
+    안뇽
+  </div>
+  <div v-else-if=" 1 == 3">
+    바보
+  </div>
+  <div v-else>
+    몰랑
+  </div>
+
   <div class="black-bg" v-if="모달창열렷니 == true">
     <div class="white-bg">
-      <h4>상세페이지 임</h4>
-      <p>상세페이지 내용</p>
+      <h4>{{ 원룸들[누른거].title }}</h4>
+      <p>{{ 원룸들[누른거].content }}</p>
+      <img :src="원룸들[누른거].image" class="modal-img">
+      <p>가격 : {{ 원룸들[누른거].price }}원</p>
       <button @click="모달창열렷니=false">닫기</button>
     </div>
   </div>
 
-  <div>
-    <img src="./assets/room0.jpg" class="room-img">
-    <h4 @click="모달창열렷니 = true">{{products[0]}}</h4>
-    <p>50만원</p>
-    <button @click="신고수[0]++">허위매물신고</button> <span>신고수 : {{ 신고수[0] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room1.jpg" class="room-img">
-    <h4 @click="모달창열렷니 = true">{{products[1]}}</h4>
-    <p>50만원</p>
-    <button @click="신고수[1]++">허위매물신고</button> <span>신고수 : {{ 신고수[1] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" class="room-img">
-    <h4 @click="모달창열렷니 = true">{{products[2]}}</h4>
-    <p>50만원</p>
-    <button @click="신고수[2]++">허위매물신고</button> <span>신고수 : {{ 신고수[2] }}</span>
+  <div v-for="(a, i) in 원룸들" :key="i">
+    <img :src="a.image" class="room-img">
+    <h4 @click="모달창열렷니 = true; 누른거 =i">{{ a.title }}</h4>
+    <p>{{ a.price }}만원</p>
   </div>
 </template>
 
 <script>
+import roomData from './assets/room';
 
 export default {
   name: 'App',
   data(){
     return  {
-      신고수 : [0,0,0],
-      products : ['역삼동원룸','천호동원룸','마포구원룸'],
+      누른거 : 0,
+      원룸들 : roomData,
       메뉴들 :  ['Home','Shop','About'],
       모달창열렷니 : false,
     }
@@ -84,6 +84,9 @@ div {
 .room-img {
   width: 100%;
   margin-top : 40px
+}
+.modal-img  {
+  width: 100%;
 }
 
 </style>
