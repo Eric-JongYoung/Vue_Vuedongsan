@@ -3,25 +3,9 @@
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
   </div>
 
-  <div v-if="1 == 2">
-    안뇽
-  </div>
-  <div v-else-if=" 1 == 3">
-    바보
-  </div>
-  <div v-else>
-    몰랑
-  </div>
+  <TheDiscount></TheDiscount>
 
-  <div class="black-bg" v-if="모달창열렷니 == true">
-    <div class="white-bg">
-      <h4>{{ 원룸들[누른거].title }}</h4>
-      <p>{{ 원룸들[누른거].content }}</p>
-      <img :src="원룸들[누른거].image" class="modal-img">
-      <p>가격 : {{ 원룸들[누른거].price }}원</p>
-      <button @click="모달창열렷니=false">닫기</button>
-    </div>
-  </div>
+  <ModalView :원룸들="원룸들" :누른거="누른거" :모달창열렷니="모달창열렷니" />
 
   <div v-for="(a, i) in 원룸들" :key="i">
     <img :src="a.image" class="room-img">
@@ -32,6 +16,8 @@
 
 <script>
 import roomData from './assets/room';
+import TheDiscount from './components/TheDiscount.vue';
+import ModalView from './components/ModalView.vue';
 
 export default {
   name: 'App',
@@ -44,6 +30,8 @@ export default {
     }
   },
   components: {
+    TheDiscount : TheDiscount,
+    ModalView : ModalView,
   }
 }
 </script>
