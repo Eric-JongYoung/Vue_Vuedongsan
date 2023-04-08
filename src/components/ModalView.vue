@@ -4,13 +4,9 @@
       <h4>{{ 원룸들[누른거].title }}</h4>
       <p>{{ 원룸들[누른거].content }}</p>
       <img :src="원룸들[누른거].image" class="modal-img">
-      <!-- <input @input="month = $event.target.value"> -->
       <input v-model="month">
-      <select v-model="month">
-        <option>3</option>
-        <option>5</option>
-      </select>
-      <input v-model.number="month">
+      <p></p>
+      <input type="range" min ="1" max="12">
       <p> {{ month }} 개월 선택함 : {{ 원룸들[누른거].price * month }}원</p>
       
       <button @click="$emit('closeModal')">닫기</button>
@@ -24,7 +20,15 @@ export default {
     name : 'ModalView',
     data(){
       return{
-        month : 1,  
+        month : 1,
+      }
+    },
+    watch : {
+      month(a){
+        if(isNaN(a) == true) {
+          alert('문자 입력하지 마라');
+          this.month = 1;
+        }
       }
     },
     props :{
