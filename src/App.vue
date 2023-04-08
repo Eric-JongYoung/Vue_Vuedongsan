@@ -3,7 +3,7 @@
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
   </div>
 
-  <TheDiscount/>
+  <TheDiscount v-if="showDiscount == true "/>
 
   <Transition name="fade">
     <ModalView @closeModal="모달창열렷니 = false" :원룸들="원룸들" :누른거="누른거" :모달창열렷니="모달창열렷니" />
@@ -32,6 +32,7 @@ export default {
       모달창열렷니 : false,
       오브젝트 : { name : 'jong', age : 20 },
       원룸들오리지널 : [...roomData], // 사본데이터로 저장
+      showDiscount : true,
     }
   },
   methods :{
@@ -43,6 +44,13 @@ export default {
     sortBack(){
       this.원룸들 = [...this.원룸들오리지널];
     }
+  },
+  mounted(){
+    //mount 되고나서 2초뒤에 닫아주삼
+    //arrow funtion 으로 해야함
+    setTimeout(()=>{
+      this.showDiscount = false;
+    },30000);
   },
   components: {
     TheDiscount : TheDiscount,
