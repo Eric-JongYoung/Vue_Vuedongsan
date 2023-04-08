@@ -5,13 +5,13 @@
 
   <TheDiscount/>
 
-  <!-- <div class="start" :class="{ end : 모달창열렷니 }"> -->
   <Transition name="fade">
     <ModalView @closeModal="모달창열렷니 = false" :원룸들="원룸들" :누른거="누른거" :모달창열렷니="모달창열렷니" />
   </Transition>
 
-  <!-- </div> -->
-
+  <button @click="priceSort">가격순 정렬</button>
+  <button @click="sortBack">되돌리기</button>
+  
   <CardRoom @openModal="모달창열렷니 = true; 누른거 = $event" :원룸="원룸들[i]" v-for="(작명, i) in 원룸들" :key="작명"/>
 
 </template>
@@ -31,6 +31,17 @@ export default {
       메뉴들 :  ['Home','Shop','About'],
       모달창열렷니 : false,
       오브젝트 : { name : 'jong', age : 20 },
+      원룸들오리지널 : [...roomData], // 사본데이터로 저장
+    }
+  },
+  methods :{
+    priceSort(){
+      this.원룸들.sort(function(a, b){
+        return a.price - b.price
+      })
+    },
+    sortBack(){
+      this.원룸들 = [...this.원룸들오리지널];
     }
   },
   components: {
@@ -105,12 +116,4 @@ div {
   /* 끝 스타일 */
   opacity: 0;
 }
-
-/* .start  {
-  opacity: 0;
-  transition : all 1s;
-}
-.end  {
-  opacity: 1;
-} */
 </style>
