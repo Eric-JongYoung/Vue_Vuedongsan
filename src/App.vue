@@ -5,7 +5,12 @@
 
   <TheDiscount/>
 
-  <ModalView @closeModal="모달창열렷니 = false" :원룸들="원룸들" :누른거="누른거" :모달창열렷니="모달창열렷니" />
+  <!-- <div class="start" :class="{ end : 모달창열렷니 }"> -->
+  <Transition name="fade">
+    <ModalView @closeModal="모달창열렷니 = false" :원룸들="원룸들" :누른거="누른거" :모달창열렷니="모달창열렷니" />
+  </Transition>
+
+  <!-- </div> -->
 
   <CardRoom @openModal="모달창열렷니 = true; 누른거 = $event" :원룸="원룸들[i]" v-for="(작명, i) in 원룸들" :key="작명"/>
 
@@ -77,4 +82,35 @@ div {
   width: 100%;
 }
 
+.fade-enter-from {
+  /* 시작스타일 */
+  transform: translateY(-1000px);
+}
+.fade-enter-active  {
+  transition: all 1s;
+}
+.fade-enter-to  {
+  /* 끝 스타일 */
+  transform: translateY(0px);
+}
+
+.fade-leave-from {
+  /* 시작스타일 */
+  opacity: 1;
+}
+.fade-leave-active  {
+  transition: all 1s;
+}
+.fade-leave-to  {
+  /* 끝 스타일 */
+  opacity: 0;
+}
+
+/* .start  {
+  opacity: 0;
+  transition : all 1s;
+}
+.end  {
+  opacity: 1;
+} */
 </style>

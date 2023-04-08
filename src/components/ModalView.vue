@@ -5,8 +5,6 @@
       <p>{{ 원룸들[누른거].content }}</p>
       <img :src="원룸들[누른거].image" class="modal-img">
       <input v-model="month">
-      <p></p>
-      <input type="range" min ="1" max="12">
       <p> {{ month }} 개월 선택함 : {{ 원룸들[누른거].price * month }}원</p>
       
       <button @click="$emit('closeModal')">닫기</button>
