@@ -5,8 +5,7 @@
 
   <TheDiscount/>
 
-  <ModalView :원룸들="원룸들" :누른거="누른거" :모달창열렷니="모달창열렷니" />
-
+  <ModalView @closeModal="모달창열렷니 = false" :원룸들="원룸들" :누른거="누른거" :모달창열렷니="모달창열렷니" />
 
   <CardRoom @openModal="모달창열렷니 = true; 누른거 = $event" :원룸="원룸들[i]" v-for="(작명, i) in 원룸들" :key="작명"/>
 
